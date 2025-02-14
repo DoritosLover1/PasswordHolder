@@ -12,7 +12,7 @@ This Java Swing-based desktop application provides a simple user interface for s
 ## 🛠️ Installation
 1. Clone this repository:
    ```sh
-   git clone https://github.com/your-username/main-page-app.git
+   git clone https://github.com/DoritosLover1/PasswordHolder.git
    ```
 2. Open the project in your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse, NetBeans).
 3. Ensure you have Java (JDK 8 or later) installed.
