@@ -1,9 +1,12 @@
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 
 public interface UtilityFunctions {
 	public static void darkModeFunction(JTable table, JPanel panel, boolean isDark) {
@@ -30,5 +33,17 @@ public interface UtilityFunctions {
             }  
         }  
         return listOfString;  
-    }  
+    }
+    
+    public static void importPasswordsToTable(TextFileHandler file, DefaultTableModel table) {
+    	Map<String, String> pair = file.fileReader();
+    	if(!pair.isEmpty()) {
+        	for(Map.Entry<String, String> entry: pair.entrySet()) {
+        		String platform = entry.getKey();
+        		String[] strings = entry.getValue().split(" ");
+        		
+        		table.addRow(new Object[] {platform, strings[0], strings[1]});
+        	}
+    	}
+    }
 }

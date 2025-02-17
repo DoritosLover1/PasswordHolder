@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 
 public class main_page extends JFrame implements UtilityFunctions{
 
+	private TextFileHandler file;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField mail_phoneArea;
@@ -44,8 +45,10 @@ public class main_page extends JFrame implements UtilityFunctions{
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("serial")
 	public main_page() {
-		
+		file = new TextFileHandler();
+
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 420, 343);
@@ -65,32 +68,32 @@ public class main_page extends JFrame implements UtilityFunctions{
 		
 		mail_phoneArea = new JTextField();
 		mail_phoneArea.setName("Mail/Phone");
-		mail_phoneArea.setBounds(230, 94, 164, 20);
+		mail_phoneArea.setBounds(230, 106, 164, 20);
 		contentPane.add(mail_phoneArea);
 		mail_phoneArea.setColumns(10);
 		
 		passwordArea = new JTextField();
 		passwordArea.setName("Password");
-		passwordArea.setBounds(230, 144, 164, 20);
+		passwordArea.setBounds(230, 156, 164, 20);
 		contentPane.add(passwordArea);
 		passwordArea.setColumns(10);
 		
 	    platformArea = new JTextField();
 	    platformArea.setName("Platform");
 	    platformArea.setColumns(10);
-	    platformArea.setBounds(230, 40, 164, 20);
+	    platformArea.setBounds(230, 52, 164, 20);
 	    contentPane.add(platformArea);
 		
 		JLabel lblNewLabel = new JLabel("E-mail / Phone Number");
-		lblNewLabel.setBounds(257, 76, 137, 14);
+		lblNewLabel.setBounds(257, 88, 137, 14);
 		contentPane.add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("Password");
-		lblNewLabel_1.setBounds(285, 128, 60, 14);
+		lblNewLabel_1.setBounds(285, 140, 60, 14);
 		contentPane.add(lblNewLabel_1);
 		
 	    JLabel lblNewLabel_2 = new JLabel("Platform");
-	    lblNewLabel_2.setBounds(288, 23, 61, 14);
+	    lblNewLabel_2.setBounds(288, 35, 61, 14);
 	    contentPane.add(lblNewLabel_2);
 		
 		JToggleButton dark_modeButton = new JToggleButton("Press for Dark Mode");
@@ -99,12 +102,20 @@ public class main_page extends JFrame implements UtilityFunctions{
 		contentPane.add(dark_modeButton);
 		
 		String[] columnNames = {"Platform", "E-Mail/Phone", "Password"};
-		tableModel = new DefaultTableModel(columnNames, 0);
+		tableModel = new DefaultTableModel(columnNames, 0) {
+            
+			@Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+		};
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 210, 282);
 		contentPane.add(scrollPane);
+		
 		table = new JTable(tableModel);
+		table.setUpdateSelectionOnSort(false);
 		table.setSelectionBackground(new Color(255, 255, 224));
 		scrollPane.setViewportView(table);
 		
@@ -123,6 +134,7 @@ public class main_page extends JFrame implements UtilityFunctions{
 
 		removeButton.addActionListener(e -> {
 		    int anySelected = table.getSelectedRow();
+		    file.deleteAtFile(tableModel.getValueAt(anySelected, 0).toString());
 		    if (anySelected != -1) {
 		        DefaultTableModel model = (DefaultTableModel) table.getModel();
 		        model.removeRow(anySelected);
@@ -163,10 +175,12 @@ public class main_page extends JFrame implements UtilityFunctions{
 				else {
 					
 		            tableModel.addRow(new Object[]{platform, email_phone, password});
+		            file.writeAtFile(platform, email_phone, password);
 				}
 				
 			}
 		});
 		
+		UtilityFunctions.importPasswordsToTable(file, tableModel);
 	}
 }

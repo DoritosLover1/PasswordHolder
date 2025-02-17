@@ -1,6 +1,9 @@
-import java.io.*;  
-import java.util.HashMap;  
-import java.util.Map; 
+import java.io.*;
+import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors; 
 
 public class TextFileHandler {  
     private File file;  
@@ -35,15 +38,28 @@ public class TextFileHandler {
     }  
 
     public void writeAtFile(String... strings) {  
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {  
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
             for (String str : strings) {  
                 writer.write(str+" ");
-                writer.close();
             }
             writer.newLine();
+            writer.close();
         } catch (IOException e) {  
             e.printStackTrace();  
         }  
         
+    }
+    
+    public void deleteAtFile(String string) {
+    	try {
+    		List<String> lines = Files.readAllLines(file.toPath());
+    		List<String> updatedLines = lines.stream().
+    				filter(line -> !line.startsWith(string)).
+    				collect(Collectors.toList());
+    		Files.write(file.toPath(), updatedLines);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
