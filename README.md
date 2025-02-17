@@ -30,9 +30,9 @@ This Java Swing-based desktop application provides a simple user interface for s
 - 🔧 **`UtilityFunctions.java`**: Defines utility functions such as the dark mode toggle.
 
 ## 🖼️ Screenshots
-![image](https://github.com/user-attachments/assets/865959a8-759e-4c7e-8709-9b6f3527a4a0)
-![image](https://github.com/user-attachments/assets/380f8aae-9c87-485f-b300-e859e28cbec3)
-![image](https://github.com/user-attachments/assets/ae050445-bd49-4672-af85-35b440714586)
+![image](https://github.com/user-attachments/assets/83d6be23-5d45-4fb7-98c8-ce520e6bd0b2)
+![image](https://github.com/user-attachments/assets/eedb707f-c934-4eb7-8a35-c87198e7c38b)
+
 
 
 ## 📜 License
