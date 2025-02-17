@@ -21,10 +21,6 @@ public class WarningDialog {
 	});
 	
 	Object[] option = {closeButton};
-	/*
-	 * We need to change message with !!!listOfNames!!!
-	 * 
-	 * */
 	String message = "Please enter valid values for the following fields: \n" + String.join(", ", listOfNames);
 	JOptionPane contentPane = new JOptionPane(message, JOptionPane.WARNING_MESSAGE,
 			JOptionPane.DEFAULT_OPTION, null, option, option[0]);
