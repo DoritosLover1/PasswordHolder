@@ -19,6 +19,7 @@ public class main_page extends JFrame implements UtilityFunctions{
 	private JPanel contentPane;
 	private JTextField mail_phoneArea;
 	private JTextField passwordArea;
+	private JTextField platformArea;
 	private JLabel lblNewLabel_1;
 	private JTable table;
 	private DefaultTableModel tableModel;
@@ -59,33 +60,45 @@ public class main_page extends JFrame implements UtilityFunctions{
 		
 		JButton change_saveButton = new JButton("Save");
 		change_saveButton.setFocusPainted(false);
-		change_saveButton.setBounds(274, 164, 75, 23);
+		change_saveButton.setBounds(274, 188, 75, 23);
 		contentPane.add(change_saveButton);
 		
 		mail_phoneArea = new JTextField();
-		mail_phoneArea.setBounds(230, 67, 164, 20);
+		mail_phoneArea.setName("Mail/Phone");
+		mail_phoneArea.setBounds(230, 94, 164, 20);
 		contentPane.add(mail_phoneArea);
 		mail_phoneArea.setColumns(10);
 		
 		passwordArea = new JTextField();
-		passwordArea.setBounds(230, 120, 164, 20);
+		passwordArea.setName("Password");
+		passwordArea.setBounds(230, 144, 164, 20);
 		contentPane.add(passwordArea);
 		passwordArea.setColumns(10);
 		
+	    platformArea = new JTextField();
+	    platformArea.setName("Platform");
+	    platformArea.setColumns(10);
+	    platformArea.setBounds(230, 40, 164, 20);
+	    contentPane.add(platformArea);
+		
 		JLabel lblNewLabel = new JLabel("E-mail / Phone Number");
-		lblNewLabel.setBounds(257, 50, 125, 14);
+		lblNewLabel.setBounds(257, 76, 137, 14);
 		contentPane.add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("Password");
-		lblNewLabel_1.setBounds(285, 104, 60, 14);
+		lblNewLabel_1.setBounds(285, 128, 60, 14);
 		contentPane.add(lblNewLabel_1);
+		
+	    JLabel lblNewLabel_2 = new JLabel("Platform");
+	    lblNewLabel_2.setBounds(288, 23, 61, 14);
+	    contentPane.add(lblNewLabel_2);
 		
 		JToggleButton dark_modeButton = new JToggleButton("Press for Dark Mode");
 		dark_modeButton.setFocusPainted(false);
 		dark_modeButton.setBounds(230, 270, 164, 23);
 		contentPane.add(dark_modeButton);
 		
-		String[] columnNames = {"E-Mail/Phone", "Password"};
+		String[] columnNames = {"Platform", "E-Mail/Phone", "Password"};
 		tableModel = new DefaultTableModel(columnNames, 0);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -98,13 +111,14 @@ public class main_page extends JFrame implements UtilityFunctions{
 		JButton removeButton = new JButton("Remove");
 		removeButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		removeButton.setFocusPainted(false);
-		removeButton.setBounds(269, 198, 85, 23);
+		removeButton.setBounds(269, 222, 85, 23);
 		removeButton.setEnabled(false);
 		contentPane.add(removeButton);
 
 		table.getSelectionModel().addListSelectionListener(e -> {
 		    int anySelected = table.getSelectedRow();
 		    removeButton.setEnabled(anySelected != -1);
+		 
 		});
 
 		removeButton.addActionListener(e -> {
@@ -130,22 +144,25 @@ public class main_page extends JFrame implements UtilityFunctions{
 		
 		change_saveButton.addActionListener(new ActionListener() {
 			
-			private String email;
+			private String email_phone;
 			private String password;
-
+			private String platform;
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				email = mail_phoneArea.getText();
+				email_phone = mail_phoneArea.getText();
 				password = passwordArea.getText();
+				platform = platformArea.getText();
 				
-				if(email.isEmpty() || password.isEmpty()) {
-		
+				if(email_phone.isEmpty() || password.isEmpty() || platform.isEmpty()) {
+					
 					@SuppressWarnings("unused")
-					WarningDialog warningDialog = new WarningDialog(main_page.this);
+					
+					WarningDialog warningDialog = new WarningDialog(main_page.this, UtilityFunctions.getEmptyFieldNames(platformArea, mail_phoneArea, passwordArea));
 				}
 				else {
 					
-		            tableModel.addRow(new Object[]{email, password});
+		            tableModel.addRow(new Object[]{platform, email_phone, password});
 				}
 				
 			}
