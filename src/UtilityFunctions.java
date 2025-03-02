@@ -1,7 +1,9 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Map;
-
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.*;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -34,7 +36,7 @@ public interface UtilityFunctions {
         }  
         return listOfString;  
     }
-    
+    // Bunun içine secretkey gerek bir eylem kısmı yapacğız ki. Kişi lazım olan key olmadan giremesin.
     public static void importPasswordsToTable(TextFileHandler file, DefaultTableModel table) {
     	Map<String, String> pair = file.fileReader();
     	if(!pair.isEmpty()) {
@@ -45,5 +47,25 @@ public interface UtilityFunctions {
         		table.addRow(new Object[] {platform, strings[0], strings[1]});
         	}
     	}
+    }
+      
+    public static File openFileExplorer() {
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt");
+        fileChooser.setFileFilter(filter);
+        fileChooser.setCurrentDirectory(new File("."));
+        
+        int result = fileChooser.showOpenDialog(null);
+        
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            if (selectedFile.exists()) {
+                return selectedFile;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 }

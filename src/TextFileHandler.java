@@ -5,20 +5,29 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors; 
 
-public class TextFileHandler {  
+public class TextFileHandler{  
     private File file;  
-
-    public TextFileHandler() {  
+    
+    public TextFileHandler(File newFile) {  
         try {  
-            file = new File("password.txt");  
+            file = newFile;  
             if (!file.exists()) {  
                 file.createNewFile();  
             }  
         } catch (IOException e) {  
             e.printStackTrace();  
-        }  
-    }  
-
+        }
+        
+    }
+    
+    public void setFile(File newFile) {
+    	file = newFile;
+    }
+    
+    public String getFileName() {
+    	return file.getName();
+    }
+    
     public Map<String, String> fileReader() {  
         Map<String, String> index = new HashMap<>();  
 
@@ -50,16 +59,17 @@ public class TextFileHandler {
         
     }
     
-    public void deleteAtFile(String string) {
-    	try {
-    		List<String> lines = Files.readAllLines(file.toPath());
-    		List<String> updatedLines = lines.stream().
-    				filter(line -> !line.startsWith(string)).
-    				collect(Collectors.toList());
-    		Files.write(file.toPath(), updatedLines);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    public void deleteAtFile(String platformName) {
+        try {
+            List<String> lines = Files.readAllLines(file.toPath());
+            List<String> updatedLines = lines.stream()
+                    .filter(line -> !line.split(" ")[0].equals(platformName))
+                    .collect(Collectors.toList());
+
+            Files.write(file.toPath(), updatedLines);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
