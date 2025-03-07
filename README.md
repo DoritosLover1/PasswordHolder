@@ -1,4 +1,4 @@
-# 🚀 PasswordHolder Application
+# 😎 PasswordHolder Application
 
 ## 📌 Overview
 This Java Swing-based desktop application provides a simple user interface for storing and managing email/phone and password combinations. It features a dark mode toggle, data persistence in a table, and user-friendly alerts for invalid inputs.
@@ -36,7 +36,7 @@ This Java Swing-based desktop application provides a simple user interface for s
 ![image](https://github.com/user-attachments/assets/5122bd0e-0b39-4d53-8104-7d7251e2fe74)
 ![image](https://github.com/user-attachments/assets/015a2fa5-b623-4cbb-a155-6c7b5f7d25dc)
 
-## Upcoming Updates
+## 🚀 Upcoming Updates
 1. Documentation.
 2. Improved UI/UX designs.
 
