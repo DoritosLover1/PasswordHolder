@@ -17,7 +17,6 @@ public interface UtilityFunctions {
 	
 		table.setBackground(bgColor);
 		table.setForeground(fgColor);
-	
 		panel.setBackground(bgColor);
 	}
 	
@@ -36,7 +35,7 @@ public interface UtilityFunctions {
         }  
         return listOfString;  
     }
-    // Bunun içine secretkey gerek bir eylem kısmı yapacğız ki. Kişi lazım olan key olmadan giremesin.
+ 
     public static void importPasswordsToTable(TextFileHandler file, DefaultTableModel table) {
     	Map<String, String> pair = file.fileReader();
     	if(!pair.isEmpty()) {
@@ -62,10 +61,10 @@ public interface UtilityFunctions {
             if (selectedFile.exists()) {
                 return selectedFile;
             } else {
-                return null;
+                return new File("password.txt");
             }
         } else {
-            return null;
+            return new File("password.txt");
         }
     }
 }

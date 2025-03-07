@@ -2,7 +2,6 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
@@ -43,54 +42,5 @@ public class FileEncryption {
         byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
 
         Files.write(Paths.get(filePath), decryptedBytes);
-    }
-	
-	public static void main(String[] args) {
-		try {
-            SecretKey secretKey = generateSecretKey();
-            String encodedKey = encodeSecretKey(secretKey);
-            System.out.println("EncodedKey: " + encodedKey);
-            
-            String originalFile = "password.txt";
-
-            encryptAndOverwriteFile(originalFile, secretKey);
-/*
-            SecretKey loadedKey = decodeSecretKey(encodedKey);
-            decryptAndOverwriteFile(originalFile, loadedKey);  
-*/
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    }	
 }
