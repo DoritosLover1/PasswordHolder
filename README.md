@@ -30,7 +30,7 @@ This Java Swing-based desktop application provides a simple user interface for s
 ## 📂 Code Structure
 - 📜 **`main_page.java`**: Implements the main UI logic and event handling.
 - ⚠️ **`WarningDialog.java`**: Creates a warning dialog for empty input fields.
-- 🔧 **`UtilityFunctions.java`**: Defines utility functions such as the dark mode toggle.
+- 🔧 **`UtilityFunctions.java`**: Defines utility functions like the dark mode toggle.
 
 ## 🖼️ Screenshots
 ![image](https://github.com/user-attachments/assets/5122bd0e-0b39-4d53-8104-7d7251e2fe74)
