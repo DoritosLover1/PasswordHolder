@@ -19,10 +19,13 @@ This Java Swing-based desktop application provides a simple user interface for s
 4. ▶️ Run `main_page.java` to launch the application.
 
 ## 🎯 Usage
-1. ✏️ Enter an email/phone number and password in the respective fields.
-2. 💾 Click the **Save** button to add the entry to the table.
-3. 🗑️ Select an entry in the table and click **Remove** to delete it.
-4. 🌙 Click the **Dark Mode** toggle to switch themes.
+1. 📑 Select a text file or application, gonna create it for you named as "password.txt"
+2. ✏️ Enter an email/phone number and password in the respective fields.
+3. 💾 Click the **Add** button to add the entry to the table.
+4. 🗑️ Select an entry in the table and click **Remove** to delete it.
+5. 🌙 Click the **Dark Mode** toggle to switch themes.
+6. 🔒 When you are going to **Save**, you must to **note** your secret key anywhere.
+7. ‼️ If you did not press **Save** and then closed the application, that would save but not encrypt.
 
 ## 📂 Code Structure
 - 📜 **`main_page.java`**: Implements the main UI logic and event handling.
@@ -30,13 +33,11 @@ This Java Swing-based desktop application provides a simple user interface for s
 - 🔧 **`UtilityFunctions.java`**: Defines utility functions such as the dark mode toggle.
 
 ## 🖼️ Screenshots
-![image](https://github.com/user-attachments/assets/865959a8-759e-4c7e-8709-9b6f3527a4a0)
-![image](https://github.com/user-attachments/assets/380f8aae-9c87-485f-b300-e859e28cbec3)
-![image](https://github.com/user-attachments/assets/ae050445-bd49-4672-af85-35b440714586)
-
+![image](https://github.com/user-attachments/assets/5122bd0e-0b39-4d53-8104-7d7251e2fe74)
+![image](https://github.com/user-attachments/assets/015a2fa5-b623-4cbb-a155-6c7b5f7d25dc)
 
 ## 📜 License
-There is a no license about this project.
+There is no license about this project.
 
 ## 🤝 Contributing
 Pull requests are welcome!
