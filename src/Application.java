@@ -204,8 +204,9 @@ public class Application extends JFrame implements UtilityFunctions{
 							"KEEP IT THIS IS TOO CRUCIAL FOR ACCESING THIS TEXT FILE,\n"
 							+ "then you interact with either close or button, application"
 							+ "is gonna close!: \n");
-					
 				}
+				
+				System.exit(0);
 			}
 		});
 		
