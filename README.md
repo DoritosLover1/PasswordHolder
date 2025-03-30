@@ -16,7 +16,7 @@ This Java Swing-based desktop application provides a simple user interface for s
    ```
 2. Open the project in your preferred Java IDE (e.g., IntelliJ IDEA, Eclipse, NetBeans).
 3. Ensure you have Java (JDK 8 or later) installed.
-4. ▶️ Run `main_page.java` to launch the application.
+4. ▶️ Run `Application.java` to launch the application.
 
 ## 🎯 Usage
 1. 📑 Select a text file or application, gonna create it for you named as "password.txt"
@@ -28,7 +28,7 @@ This Java Swing-based desktop application provides a simple user interface for s
 7. ‼️ If you did not press **Save** and then closed the application, that would save but not encrypt.
 
 ## 📂 Code Structure
-- 📜 **`main_page.java`**: Implements the main UI logic and event handling.
+- 📜 **`Application.java`**: Implements the main UI logic and event handling.
 - ⚠️ **`WarningDialog.java`**: Creates a warning dialog for empty input fields.
 - 🔧 **`UtilityFunctions.java`**: Defines utility functions like the dark mode toggle.
 
