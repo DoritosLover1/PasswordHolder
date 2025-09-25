@@ -215,6 +215,7 @@ public class Application extends JFrame implements UtilityFunctions{
 	    	try {
 				FileEncryption.decryptAndOverwriteFile(file.getFileName(), secretKey);
 				UtilityFunctions.importPasswordsToTable(file, tableModel);
+				secretKeyTextArea.setText("");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -240,6 +241,9 @@ public class Application extends JFrame implements UtilityFunctions{
 				else {
 			         tableModel.addRow(new Object[]{platform, email_phone, password});
 			         file.writeAtFile(platform, email_phone, password);
+			         mail_phoneArea.setText("");
+			         passwordArea.setText("");
+			         platformArea.setText("");
 				}
 			}	
 	    	
